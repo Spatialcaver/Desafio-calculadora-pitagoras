@@ -115,14 +115,13 @@ margin: 0%;
 }
 
 </style>
-/* fim da estilização */
-<body> /* começo do corpo do documento*/
+<body> 
     <h1>Calculadora Teoremade Pitagoras:</h1>
         <h3>Aqui será possível inserir o valor de dois lados de um triângulo e obter o valor do lado oculto.</h3>
-        <main class="main"> /* main para centralizar a aplicação e facilitar o desenvolvimento e estilização */
+        <main class="main"> 
             <section class="calc-hipotenusa">
               <h1>Valor da Hipotenusa</h1>
-              <form class="form" id="form"> /* fomulario para captação de dados e envio para api */
+              <form class="form" id="form">
                 <label for="co">
                   Cateto oposto
                   <input style="width: min-content;" name="co" id="co" placeholder="Entre com o valor" type="number" />
@@ -132,7 +131,7 @@ margin: 0%;
                   <input style="width: min-content;" name="ca" id="ca" placeholder="Entre com o valor" type="number" />
                 </label>
               </form><br>
-              <button  id="botão" style="cursor: default; background-color: #064079; font-size: medium; text-align: center;" onclick="getApi()">Calcular</button> /*Botão inserido fora do forms para evitar recarrecamento de page após eviar dados, trazendo uma melhor responsividade para o usuário*/
+              <button  id="botão" style="cursor: default; background-color: #064079; font-size: medium; text-align: center;" onclick="getApi()">Calcular</button> 
                 <h2>O valor da hipotenusa é:</h2>
                 <input disabled  id="resultadinho">
             </section>
