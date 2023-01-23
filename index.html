@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Calculadora Teorema de Pitagoras</title>
+</head>
+<!-- inicio da estilização do documento, aqui são aplicados cores e afins para os elementos da page. -->
+<style>
+  @charset Utf-8
+
+#calc-hipotenusa{
+  background-color: #5d0850;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Acme", sans-serif;
+  font-size: 20px;
+  color: #064079;
+  background-color: #dfdbe5;
+}
+
+.main {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.calc-hipotenusa {
+  padding: auto;
+  box-shadow: 6px 6px 20px gray, -6px -6px 20px white;
+  background-color: #dfdbe5;
+}
+
+@media (min-width: 500px) {
+  .calc-hipotenusa {
+    
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    width: 100%;
+    padding: 1em;
+  }
+}
+
+.calc-hipotenusa h1 {
+  text-align: center;
+  font-size: 2em;
+  text-decoration: underline;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.3em;
+}
+
+.form label,
+.form button {
+  margin-top: 1em;
+}
+
+.form input,
+.form button {
+  font-size: inherit;
+  font-family: inherit;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.form button {
+  background-color: #fbefff;
+  cursor: pointer;
+  border-radius: 0.3em;
+  width: 50%;
+}
+
+.form button:hover {
+  filter: opacity(0.8);
+}
+
+.form button:active {
+  background-color: #ffefff;
+  color: #000;
+  filter: opacity(0.8);
+}
+
+.botão{
+  align-items: center;
+}
+h1{
+  text-align: center;
+
+}
+h3{
+  text-align: center;
+  
+}
+
+.resultado{
+text-align: center;
+margin: 0%;
+
+}
+
+</style>
+/* fim da estilização */
+<body> /* começo do corpo do documento*/
+    <h1>Calculadora Teoremade Pitagoras:</h1>
+        <h3>Aqui será possível inserir o valor de dois lados de um triângulo e obter o valor do lado oculto.</h3>
+        <main class="main"> /* main para centralizar a aplicação e facilitar o desenvolvimento e estilização */
+            <section class="calc-hipotenusa">
+              <h1>Valor da Hipotenusa</h1>
+              <form class="form" id="form"> /* fomulario para captação de dados e envio para api */
+                <label for="co">
+                  Cateto oposto
+                  <input style="width: min-content;" name="co" id="co" placeholder="Entre com o valor" type="number" />
+                </label>
+                <label for="ca">
+                  Cateto adjacente
+                  <input style="width: min-content;" name="ca" id="ca" placeholder="Entre com o valor" type="number" />
+                </label>
+              </form><br>
+              <button  id="botão" style="cursor: default; background-color: #064079; font-size: medium; text-align: center;" onclick="getApi()">Calcular</button> /*Botão inserido fora do forms para evitar recarrecamento de page após eviar dados, trazendo uma melhor responsividade para o usuário*/
+                <h2>O valor da hipotenusa é:</h2>
+                <input disabled  id="resultadinho">
+            </section>
+            
+          
+          </main>
+                   
+<script>
+  /*Solicitando dados da api*/
+  function getApi( ) {
+    var co = document.getElementById("co").value;
+    var ca = document.getElementById("ca").value;
+    var teste = 0.00;
+    /*recebendo os dados e enviando para o usuario*/
+    console.log(co, ca);
+    fetch('http://127.0.0.1:5000/calcular?ca='+ca+'&co='+co)
+    .then((res) => res.json())
+    .then((data) => {console.log(data);
+    /*criando var para receber o resultado da operação*/
+    teste = data.hipotenusa;})
+    .then((x) => {document.getElementById("resultadinho").value = teste.toFixed(2) ;})
+
+     const pre = document.createElement('pre');
+  /*exibindo o resultado na pagina*/
+}
+</script>
+    </body>
+
+</html>
